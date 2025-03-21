@@ -1,9 +1,8 @@
-import { expect } from '@playwright/test'
-
 export class LoginPage {
   #inputEmail
   #inputPassword
   #btnAccess
+  #btnRegister
   #invalidLoginModal
   #msgInvalidFormat
 
@@ -13,6 +12,7 @@ export class LoginPage {
     this.#inputEmail = page.locator('[class*=FormLogin] [type=email]')
     this.#inputPassword = page.locator('[class*=FormLogin] [type=password]')
     this.#btnAccess = page.getByRole('button', { name: 'Acessar' })
+    this.#btnRegister = page.locator('button', { hasText: 'Registrar'})
     this.#invalidLoginModal = page.locator('#modalText')
     this.#msgInvalidFormat = page.locator("[class*=FormLogin] .input__warging")
   }
@@ -29,6 +29,10 @@ export class LoginPage {
       await this.#inputPassword.type(password)
     }
     await this.#btnAccess.click()
+  }
+
+  async clickOnRegister() {
+    await this.#btnRegister.click()
   }
 
   async invalidLogin() {

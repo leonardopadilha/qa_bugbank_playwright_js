@@ -42,5 +42,4 @@ test('Não deve acessar a tela secreta com dados de login inválido', async ({ p
   const msgLoginInvalidExpected = "Usuário ou senha inválido.Tente novamente ou verifique suas informações!"
   const msgLoginInvalidReturned = (await loginPage.invalidLogin()).replace(/\n/g, '').trim()
   expect(msgLoginInvalidReturned).toMatch(msgLoginInvalidExpected)
-
 });
