@@ -21,6 +21,9 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Instalando playwright
+        run: npx playwright install
+
       - name: Instalando as dependencias
         run: npm install
 
