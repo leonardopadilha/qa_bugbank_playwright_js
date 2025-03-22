@@ -27,5 +27,5 @@ jobs:
       - name: Instalando as dependencias
         run: npm install
 
-      - name: Executando os tests via terminal
+      - name: Executando testes via terminal
         run: npm run test
