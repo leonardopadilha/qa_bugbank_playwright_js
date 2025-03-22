@@ -4,6 +4,8 @@ export class RegisterPage {
   #inputPassword
   #inputConfirmPassword
   #slideBalance
+  #createdCheck
+  #createdAccountModal
   #btnSubmit
 
   constructor(page) {
@@ -12,6 +14,9 @@ export class RegisterPage {
     this.#inputName = page.getByPlaceholder('Informe seu Nome')
     this.#inputPassword = page.locator('.card__register [name="password"]')
     this.#inputConfirmPassword = page.locator('.card__register [name="passwordConfirmation"]')
+    this.#createdCheck = page.locator('[class*=ContainerInformations] svg')
+    this.#createdAccountModal = page.locator('#modalText')
+
     this.#btnSubmit = page.locator('[class*=Register] [type=submit]')
   }
 
@@ -30,5 +35,13 @@ export class RegisterPage {
     }
 
     await this.#btnSubmit.click()
+  }
+
+  async checkIsVisible() {
+    return await this.#createdCheck
+  }
+
+  async createdAccount() {
+    return this.#createdAccountModal.textContent()
   }
 }
