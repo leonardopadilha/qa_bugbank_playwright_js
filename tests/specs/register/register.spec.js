@@ -14,7 +14,6 @@ test.beforeEach(async ({ page }) => {
 test('Deve acessar a página de registro com sucesso', async({ page }) => {
 
   const newUser = user()
-  console.log("User: " + newUser.name)
 
   loginPage = new LoginPage(page)
 
@@ -25,8 +24,10 @@ test('Deve acessar a página de registro com sucesso', async({ page }) => {
   const messageReturned = (await registerPage.createdAccount())
                                   .replace(/\d+[-]?\d+/g, '')  // Remove números e traços
                                   .replace(/\s+/g, ' ')         // Substitui múltiplos espaços por um único espaço
-                                  .trim();                      // Remove espaços no início e no final da string
-  
-  //expect(await registerPage.checkIsVisible()).toBeVisible()
+                                  .trim();  
+                                                      // Remove espaços no início e no final da string
+  //const element = await registerPage.checkIsVisible()
+  //await element.waitFor({ state: 'visible' });
+  await expect(await registerPage.checkIsVisible()).toBeVisible()
   expect(await messageReturned).toContain(messageExpected)
 })

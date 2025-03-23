@@ -7,6 +7,7 @@ export class RegisterPage {
   #createdCheck
   #createdAccountModal
   #btnSubmit
+  #btnCloseModal
 
   constructor(page) {
     this.page = page
@@ -17,6 +18,7 @@ export class RegisterPage {
     this.#createdCheck = page.locator('[class*=ContainerInformations] svg')
     this.#createdAccountModal = page.locator('#modalText')
 
+    this.#btnCloseModal = page.locator('#btnCloseModal')
     this.#btnSubmit = page.locator('[class*=Register] [type=submit]')
   }
 
@@ -38,10 +40,15 @@ export class RegisterPage {
   }
 
   async checkIsVisible() {
+    console.log("check: " + await this.#createdCheck)
     return await this.#createdCheck
   }
 
   async createdAccount() {
     return this.#createdAccountModal.textContent()
+  }
+
+  async closeModal() {
+    await this.#btnCloseModal.click()
   }
 }
