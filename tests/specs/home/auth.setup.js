@@ -3,7 +3,7 @@ import { expect, test as setup } from '@playwright/test';
 
 const TOKEN_FILEPATH = '../../../playwright/.auth/user.json'
 
-setup('Autenticacao', async({ page }) => {
+setup.skip('Autenticacao', async({ page }) => {
 
 /* 
   const email = testInfo.project.use.email

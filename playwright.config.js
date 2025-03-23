@@ -35,11 +35,20 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    { name: 'setup', testMatch: /.*\.setup\.js/ },
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
+/*     { name: 'setup', testMatch: /.*\.setup\.js/ },
+    {
+      name: 'chromium:saved-credentials',
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: 'playwright/.auth/user.json',
+        viewport: { width: 1920, height: 1080 },
+      },
+      dependencies: ['setup']
+    } */
 
 
 /*     {
